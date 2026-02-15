@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xfendziak | Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        body {
+            background-color: #0a0a0c;
+            background-image: radial-gradient(circle at 50% 50%, #1e1135 0%, #0a0a0c 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            width: 85%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            z-index: 1000;
+        }
+
+        .nav-logo { font-weight: 900; color: #a78bfa; letter-spacing: 1px; font-size: 1.2rem; cursor: pointer; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.75rem; font-weight: 700; opacity: 0.6; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover { opacity: 1; color: #a78bfa; }
+
+        .nav-btn {
+            background: #5865F2;
+            padding: 8px 20px !important;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+        
+        .nav-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(88, 101, 242, 0.4); }
+
+        .container {
+            max-width: 1100px;
+            width: 90%;
+            padding: 140px 0 60px 0;
+            text-align: center;
+        }
+
+        /* ANIMACJA PRZEJŚCIA */
+        .page-view {
+            animation: slideUpFade 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(to bottom, #ffffff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .subtitle { opacity: 0.6; margin: 20px 0 50px 0; font-size: 1.1rem; }
+
+        #shop-view { display: none; }
+
+        /* KARTY STATYSTYK */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .stat-card:hover { background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); }
+
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: #a78bfa; }
+        .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5; margin-top: 5px; display: block; }
+
+        /* SKLEP */
+        .shop-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; }
+        
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .shop-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 20px;
+            text-align: left;
+            transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow: hidden;
+        }
+
+        .shop-card:hover { transform: translateY(-12px); border-color: #a78bfa; background: rgba(167, 139, 250, 0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            background: #16161e;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s transform;
+        }
+
+        .shop-card:hover .product-img img { transform: scale(1.1); }
+
+        .product-name { font-size: 1.2rem; font-weight: 800; display: block; }
+        .product-price { color: #a78bfa; font-weight: 700; margin: 5px 0 20px 0; display: block; font-size: 1.1rem; }
+
+        .buy-group { display: flex; gap: 10px; }
+        .info-btn { background: rgba(255,255,255,0.05); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+        .info-btn:hover { background: rgba(255,255,255,0.15); }
+        
+        .zakup-btn { 
+            flex-grow: 1; 
+            background: rgba(167, 139, 250, 0.15); 
+            color: #a78bfa; 
+            border: 1px solid rgba(167, 139, 250, 0.3); 
+            padding: 12px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            text-align: center; 
+            text-transform: uppercase; 
+            transition: 0.3s; 
+            font-size: 0.85rem;
+        }
+        .zakup-btn:hover { background: #a78bfa; color: black; transform: scale(1.02); }
+
+        footer { margin-top: 80px; padding-bottom: 40px; opacity: 0.3; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo" onclick="showMain()">xfendziak</div>
+        <div class="nav-links">
+            <a onclick="showMain()">Strona główna</a>
+            <a href="#">Portfolio</a>
+            <a onclick="showShop()">Sklep</a>
+            <a href="https://discord.gg/7PWtcsybV3" class="nav-btn" target="_blank">CoreVisuals</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="main-view" class="page-view">
+            <h1>xfendziak</h1>
+            <p class="subtitle">Siemka jestem grafikiem od listopada 2025 roku! <br>Tanio i Sprawnie</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Miesiące Doświadczenia</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">Klienci</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="shop-view" class="page-view">
+            <div class="shop-title">Sklep CoreVisual</div>
+            <div class="shop-grid">
+                
+                <div class="shop-card">
+                    <div class="product-img">
+                        <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Basic Pack">
+                    </div>
+                    <span class="product-name">CorePack - Basic</span>
+                    <span class="product-price">5.00 PLN</span>
+                    <div class="buy-group">
+                        <a href="#" class="info-btn">i</a>
+                        <a href="https://tipply.pl/@xfendziak" target="_blank" class="zakup-btn">ZAKUP</a>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <div class="product-img">
+                        <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Medium Pack">
+                    </div>
+                    <span class="product-name">CorePack - Medium</span>
+                    <span class="product-price">10.00 PLN</span>
+                    <div class="buy-group">
+                        <a href="#" class="info-btn">i</a>
+                        <a href="https://tipply.pl/@xfendziak" target="_blank" class="zakup-btn">ZAKUP</a>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <div class="product-img">
+                        <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Core Pack">
+                    </div>
+                    <span class="product-name">CorePack - Core</span>
+                    <span class="product-price">15.00 PLN</span>
+                    <div class="buy-group">
+                        <a href="#" class="info-btn">i</a>
+                        <a href="https://tipply.pl/@xfendziak" target="_blank" class="zakup-btn">ZAKUP</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            © 2026 xfendziak. Wszelkie prawa zastrzeżone.
+        </footer>
+    </div>
+
+    <script>
+        function showShop() {
+            const main = document.getElementById('main-view');
+            const shop = document.getElementById('shop-view');
+            
+            main.style.display = 'none';
+            shop.style.display = 'block';
+            
+            // Restart animacji, żeby za każdym razem płynnie wchodziło
+            shop.style.animation = 'none';
+            shop.offsetHeight; 
+            shop.style.animation = null; 
+        }
+
+        function showMain() {
+            const main = document.getElementById('main-view');
+            const shop = document.getElementById('shop-view');
+            
+            shop.style.display = 'none';
+            main.style.display = 'block';
+            
+            main.style.animation = 'none';
+            main.offsetHeight; 
+            main.style.animation = null;
+        }
+    </script>
+
+</body>
+</html>
