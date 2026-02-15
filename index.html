@@ -150,8 +150,23 @@
         .product-price { color: #a78bfa; font-weight: 700; margin: 5px 0 20px 0; display: block; font-size: 1.1rem; }
 
         .buy-group { display: flex; gap: 10px; }
-        .info-btn { background: rgba(255,255,255,0.05); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
-        .info-btn:hover { background: rgba(255,255,255,0.15); }
+        
+        /* MODYFIKACJA INFO BTN DLA POPUPU */
+        .info-btn { 
+            background: rgba(255,255,255,0.05); 
+            width: 45px; height: 45px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .info-btn:hover { background: rgba(255,255,255,0.15); color: #a78bfa; }
         
         .zakup-btn { 
             flex-grow: 1; 
@@ -169,10 +184,89 @@
         }
         .zakup-btn:hover { background: #a78bfa; color: black; transform: scale(1.02); }
 
+        /* STYLE OKNA MODALNEGO (POP-UP) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal-content {
+            background-color: #121217;
+            margin: 10vh auto;
+            padding: 30px;
+            border: 1px solid #2a2a35;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 24px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .close-x {
+            cursor: pointer;
+            font-size: 28px;
+            color: #666;
+            transition: 0.3s;
+        }
+        .close-x:hover { color: #fff; }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #1f1f27;
+        }
+        .info-row:last-child { border-bottom: none; }
+
+        .info-label { color: #ccc; font-weight: 500; font-size: 0.95rem; }
+        .info-count {
+            background: #1f1f27;
+            color: #7d7d8e;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
         footer { margin-top: 80px; padding-bottom: 40px; opacity: 0.3; font-size: 0.8rem; }
     </style>
 </head>
 <body>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">NAZWA PACZKI</h2>
+                <span class="close-x" onclick="closeModal()">&times;</span>
+            </div>
+            <div id="modalList">
+                </div>
+        </div>
+    </div>
 
     <nav class="navbar">
         <div class="nav-logo" onclick="showMain()">xfendziak</div>
@@ -212,7 +306,7 @@
                     <span class="product-name">CorePack - Basic</span>
                     <span class="product-price">5.00 PLN</span>
                     <div class="buy-group">
-                        <a href="#" class="info-btn">i</a>
+                        <button onclick="openInfo('basic')" class="info-btn">i</button>
                         <a href="https://tipply.pl/@xfendziak" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
                 </div>
@@ -224,7 +318,7 @@
                     <span class="product-name">CorePack - Medium</span>
                     <span class="product-price">10.00 PLN</span>
                     <div class="buy-group">
-                        <a href="#" class="info-btn">i</a>
+                        <button onclick="openInfo('medium')" class="info-btn">i</button>
                         <a href="https://tipply.pl/@xfendziak" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
                 </div>
@@ -236,7 +330,7 @@
                     <span class="product-name">CorePack - Core</span>
                     <span class="product-price">15.00 PLN</span>
                     <div class="buy-group">
-                        <a href="#" class="info-btn">i</a>
+                        <button onclick="openInfo('core')" class="info-btn">i</button>
                         <a href="https://tipply.pl/@xfendziak" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
                 </div>
@@ -250,14 +344,76 @@
     </div>
 
     <script>
+        // DANE PACZEK
+        const packData = {
+            'basic': {
+                title: 'CorePack Basic',
+                items: [
+                    ['tła zwykłe', 'x3'],
+                    ['tła zniszczonego terenu', 'x2'],
+                    ['dodatków', 'x5'],
+                    ['obramówek', 'x5'],
+                    ['napisy live', 'x3'],
+                    ['blaski światła', 'x4'],
+                    ['ogień', 'x1'],
+                    ['śnieg', 'x1']
+                ]
+            },
+            'medium': {
+                title: 'CorePack Medium',
+                items: [
+                    ['tła premium', 'x10'],
+                    ['pędzle custom', 'x5'],
+                    ['warstwy FX', 'x15'],
+                    ['particles', 'x10']
+                ]
+            },
+            'core': {
+                title: 'CorePack Core',
+                items: [
+                    ['wszystko z Medium', 'TAK'],
+                    ['pliki PSD', 'x5'],
+                    ['tekstury 4K', 'x50'],
+                    ['pędzle autorskie', 'x20']
+                ]
+            }
+        };
+
+        // OBSŁUGA OKNA MODALNEGO
+        function openInfo(packKey) {
+            const pack = packData[packKey];
+            document.getElementById('modalTitle').innerText = pack.title;
+            
+            const listContainer = document.getElementById('modalList');
+            listContainer.innerHTML = ''; // Czyścimy listę
+            
+            pack.items.forEach(item => {
+                listContainer.innerHTML += `
+                    <div class="info-row">
+                        <span class="info-label">${item[0]}</span>
+                        <span class="info-count">${item[1]}</span>
+                    </div>`;
+            });
+            
+            document.getElementById('infoModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = "none";
+        }
+
+        // Zamykanie przy kliknięciu poza okno
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target == modal) { closeModal(); }
+        }
+
+        // NAWIGACJA
         function showShop() {
             const main = document.getElementById('main-view');
             const shop = document.getElementById('shop-view');
-            
             main.style.display = 'none';
             shop.style.display = 'block';
-            
-            // Restart animacji, żeby za każdym razem płynnie wchodziło
             shop.style.animation = 'none';
             shop.offsetHeight; 
             shop.style.animation = null; 
@@ -266,10 +422,8 @@
         function showMain() {
             const main = document.getElementById('main-view');
             const shop = document.getElementById('shop-view');
-            
             shop.style.display = 'none';
             main.style.display = 'block';
-            
             main.style.animation = 'none';
             main.offsetHeight; 
             main.style.animation = null;
