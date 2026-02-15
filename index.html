@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>xfendziak | Portfolio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        /* Zmienione na Plus Jakarta Sans dla lepszego vibe'u */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
 
         body {
             background-color: #0a0a0c;
             background-image: radial-gradient(circle at 50% 50%, #1e1135 0%, #0a0a0c 100%);
             color: white;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -38,7 +39,7 @@
             z-index: 1000;
         }
 
-        .nav-logo { font-weight: 900; color: #a78bfa; letter-spacing: 1px; font-size: 1.2rem; cursor: pointer; }
+        .nav-logo { font-weight: 800; color: #a78bfa; letter-spacing: 1px; font-size: 1.2rem; cursor: pointer; }
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { color: white; text-decoration: none; font-size: 0.75rem; font-weight: 700; opacity: 0.6; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover { opacity: 1; color: #a78bfa; }
@@ -75,7 +76,7 @@
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 900;
+            font-weight: 800;
             margin: 0;
             background: linear-gradient(to bottom, #ffffff, #a78bfa);
             -webkit-background-clip: text;
@@ -104,16 +105,16 @@
         }
         .stat-card:hover { background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); }
 
-        .stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: #a78bfa; }
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 800; color: #a78bfa; }
         .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5; margin-top: 5px; display: block; }
 
-        /* --- SOFTWARE SECTION (POPRAWIONA) --- */
+        /* --- SOFTWARE SECTION --- */
         .software-title {
             margin-top: 100px; 
             font-size: 1.5rem; 
             opacity: 0.9; 
             letter-spacing: -0.5px; 
-            font-weight: 900;
+            font-weight: 800;
             color: #fff;
         }
 
@@ -128,11 +129,11 @@
         .software-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 25px 45px;
+            padding: 20px 35px;
             border-radius: 24px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
@@ -145,19 +146,19 @@
         }
 
         .software-card img {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             object-fit: contain;
         }
 
         .software-card span {
-            font-weight: 900;
-            font-size: 1.4rem;
+            font-weight: 800;
+            font-size: 1.1rem;
             color: #fff;
         }
 
         /* SKLEP */
-        .shop-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; }
+        .shop-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; }
         
         .shop-grid {
             display: grid;
@@ -233,7 +234,7 @@
         }
         .zakup-btn:hover { background: #a78bfa; color: black; transform: scale(1.02); }
 
-        /* STYLE OKNA MODALNEGO */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -259,12 +260,7 @@
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
             max-height: 85vh; 
             overflow-y: auto; 
-            overflow-x: hidden;
         }
-
-        .modal-content::-webkit-scrollbar { width: 8px; }
-        .modal-content::-webkit-scrollbar-track { background: transparent; }
-        .modal-content::-webkit-scrollbar-thumb { background: #a78bfa; border-radius: 10px; }
 
         .modal-header {
             display: flex;
@@ -274,47 +270,17 @@
             top: 0;
             background-color: #121217;
             padding: 30px 0 20px 0;
-            margin-bottom: 10px;
             z-index: 10;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .modal-header h2 {
-            margin: 0;
-            text-transform: uppercase;
-            font-weight: 900;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-
-        .close-x {
-            cursor: pointer;
-            font-size: 28px;
-            color: #666;
-            transition: 0.3s;
-            line-height: 1;
-        }
+        .modal-header h2 { margin: 0; font-weight: 800; font-size: 1.5rem; color: #fff; }
+        .close-x { cursor: pointer; font-size: 28px; color: #666; transition: 0.3s; }
         .close-x:hover { color: #fff; }
 
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #1f1f27;
-        }
-        .info-row:last-child { border-bottom: none; }
-
-        .info-label { color: #ccc; font-weight: 500; font-size: 0.95rem; }
-        .info-count {
-            background: #1f1f27;
-            color: #7d7d8e;
-            padding: 4px 10px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
+        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1f1f27; }
+        .info-label { color: #ccc; font-size: 0.95rem; }
+        .info-count { background: #1f1f27; color: #a78bfa; padding: 4px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: bold; }
 
         footer { margin-top: 80px; padding-bottom: 40px; opacity: 0.3; font-size: 0.8rem; }
     </style>
@@ -366,6 +332,10 @@
                 <div class="software-card">
                     <img src="https://www.maxon.net/favicon.ico" alt="C4D" style="filter: brightness(1.5);">
                     <span>Cinema 4D</span>
+                </div>
+                <div class="software-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VSC">
+                    <span>VS Code</span>
                 </div>
             </div>
         </div>
@@ -466,7 +436,6 @@
                     </div>`;
             });
             document.getElementById('infoModal').style.display = "block";
-            document.querySelector('.modal-content').scrollTop = 0;
         }
 
         function closeModal() {
@@ -474,22 +443,17 @@
         }
 
         window.onclick = function(event) {
-            const modal = document.getElementById('infoModal');
-            if (event.target == modal) { closeModal(); }
+            if (event.target == document.getElementById('infoModal')) { closeModal(); }
         }
 
         function showShop() {
             document.getElementById('main-view').style.display = 'none';
-            const shop = document.getElementById('shop-view');
-            shop.style.display = 'block';
-            shop.style.animation = 'none'; shop.offsetHeight; shop.style.animation = null; 
+            document.getElementById('shop-view').style.display = 'block';
         }
 
         function showMain() {
             document.getElementById('shop-view').style.display = 'none';
-            const main = document.getElementById('main-view');
-            main.style.display = 'block';
-            main.style.animation = 'none'; main.offsetHeight; main.style.animation = null;
+            document.getElementById('main-view').style.display = 'block';
         }
     </script>
 </body>
