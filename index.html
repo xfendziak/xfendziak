@@ -5,24 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>xfendziak | Portfolio</title>
     <style>
-        /* Zmiana na bardziej nowoczesny i estetyczny font Plus Jakarta Sans */
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
         body {
             background-color: #0a0a0c;
             background-image: radial-gradient(circle at 50% 50%, #1e1135 0%, #0a0a0c 100%);
             color: white;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            /* Lepsze renderowanie czcionek */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
         }
 
         /* NAVBAR */
@@ -43,34 +38,19 @@
             z-index: 1000;
         }
 
-        .nav-logo { 
-            font-weight: 800; 
-            color: #a78bfa; 
-            letter-spacing: -0.5px; 
-            font-size: 1.2rem; 
-            cursor: pointer; 
-        }
-        
+        .nav-logo { font-weight: 900; color: #a78bfa; letter-spacing: 1px; font-size: 1.2rem; cursor: pointer; }
         .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { 
-            color: white; 
-            text-decoration: none; 
-            font-size: 0.85rem; 
-            font-weight: 500; 
-            opacity: 0.7; 
-            transition: 0.3s; 
-            cursor: pointer; 
-        }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.75rem; font-weight: 700; opacity: 0.6; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover { opacity: 1; color: #a78bfa; }
 
         .nav-btn {
             background: #5865F2;
-            padding: 10px 22px !important;
+            padding: 8px 20px !important;
             border-radius: 20px;
             text-decoration: none;
             color: white;
-            font-weight: 600;
-            font-size: 0.8rem;
+            font-weight: bold;
+            font-size: 0.75rem;
             transition: 0.3s;
         }
         
@@ -94,25 +74,16 @@
         }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 800;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
             margin: 0;
             background: linear-gradient(to bottom, #ffffff, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -3px;
-            line-height: 1.1;
+            letter-spacing: -2px;
         }
 
-        .subtitle { 
-            opacity: 0.6; 
-            margin: 25px 0 50px 0; 
-            font-size: 1.15rem; 
-            font-weight: 400;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        .subtitle { opacity: 0.6; margin: 20px 0 50px 0; font-size: 1.1rem; }
 
         #shop-view { display: none; }
 
@@ -128,21 +99,21 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 30px;
-            border-radius: 24px;
+            border-radius: 20px;
             transition: 0.3s;
         }
         .stat-card:hover { background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); }
 
-        .stat-number { display: block; font-size: 2.8rem; font-weight: 800; color: #a78bfa; letter-spacing: -1px; }
-        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.5; margin-top: 8px; display: block; font-weight: 600; }
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: #a78bfa; }
+        .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5; margin-top: 5px; display: block; }
 
-        /* --- SOFTWARE SECTION --- */
+        /* --- SOFTWARE SECTION (POPRAWIONA) --- */
         .software-title {
             margin-top: 100px; 
-            font-size: 1.6rem; 
-            opacity: 0.95; 
+            font-size: 1.5rem; 
+            opacity: 0.9; 
             letter-spacing: -0.5px; 
-            font-weight: 700;
+            font-weight: 900;
             color: #fff;
         }
 
@@ -157,29 +128,36 @@
         .software-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 40px;
+            padding: 25px 45px;
             border-radius: 24px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .software-card:hover {
-            background: rgba(167, 139, 250, 0.1);
+            background: rgba(167, 139, 250, 0.15);
             border-color: #a78bfa;
-            transform: translateY(-5px);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(167, 139, 250, 0.2);
+        }
+
+        .software-card img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         .software-card span {
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-weight: 900;
+            font-size: 1.4rem;
             color: #fff;
-            letter-spacing: -0.3px;
         }
 
         /* SKLEP */
-        .shop-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 40px; letter-spacing: -1.5px; }
+        .shop-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; }
         
         .shop-grid {
             display: grid;
@@ -190,59 +168,159 @@
         .shop-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            padding: 24px;
+            border-radius: 24px;
+            padding: 20px;
             text-align: left;
             transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow: hidden;
         }
 
-        .product-name { font-size: 1.25rem; font-weight: 700; display: block; letter-spacing: -0.5px; }
-        .product-price { color: #a78bfa; font-weight: 600; margin: 5px 0 20px 0; display: block; font-size: 1.1rem; }
+        .shop-card:hover { transform: translateY(-12px); border-color: #a78bfa; background: rgba(167, 139, 250, 0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
+        .product-img {
+            width: 100%;
+            height: 250px;
+            background: #16161e;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s transform;
+        }
+
+        .shop-card:hover .product-img img { transform: scale(1.1); }
+
+        .product-name { font-size: 1.2rem; font-weight: 800; display: block; }
+        .product-price { color: #a78bfa; font-weight: 700; margin: 5px 0 20px 0; display: block; font-size: 1.1rem; }
+
+        .buy-group { display: flex; gap: 10px; }
+        
+        .info-btn { 
+            background: rgba(255,255,255,0.05); 
+            width: 45px; height: 45px; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .info-btn:hover { background: rgba(255,255,255,0.15); color: #a78bfa; }
+        
         .zakup-btn { 
             flex-grow: 1; 
-            background: rgba(167, 139, 250, 0.12); 
+            background: rgba(167, 139, 250, 0.15); 
             color: #a78bfa; 
-            border: 1px solid rgba(167, 139, 250, 0.2); 
-            padding: 14px; 
-            border-radius: 14px; 
+            border: 1px solid rgba(167, 139, 250, 0.3); 
+            padding: 12px; 
+            border-radius: 12px; 
             text-decoration: none; 
-            font-weight: 700; 
+            font-weight: 800; 
             text-align: center; 
+            text-transform: uppercase; 
             transition: 0.3s; 
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+            font-size: 0.85rem;
         }
+        .zakup-btn:hover { background: #a78bfa; color: black; transform: scale(1.02); }
 
         /* STYLE OKNA MODALNEGO */
-        .modal-header h2 {
-            font-weight: 800;
-            font-size: 1.4rem;
-            letter-spacing: -0.5px;
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease;
         }
 
-        .info-label { color: #e2e2e2; font-weight: 500; font-size: 0.9rem; }
-        .info-count { font-family: monospace; font-weight: 600; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        footer { margin-top: 80px; padding-bottom: 40px; opacity: 0.4; font-size: 0.85rem; font-weight: 500; }
-        
-        /* Reszta styli pozostaje bez zmian jak w oryginale */
-        .product-img { width: 100%; height: 250px; background: #16161e; border-radius: 18px; margin-bottom: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s transform; }
-        .shop-card:hover .product-img img { transform: scale(1.08); }
-        .buy-group { display: flex; gap: 10px; }
-        .info-btn { background: rgba(255,255,255,0.05); width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; cursor: pointer; border: none; font-family: inherit; font-weight: bold; }
-        .info-btn:hover { background: rgba(255,255,255,0.15); color: #a78bfa; }
-        .zakup-btn:hover { background: #a78bfa; color: black; }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-        .modal-content { background-color: #121217; margin: 5vh auto; padding: 0 30px 30px 30px; border: 1px solid #2a2a35; width: 90%; max-width: 400px; border-radius: 24px; position: relative; max-height: 85vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background-color: #121217; padding: 30px 0 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .close-x { cursor: pointer; font-size: 28px; color: #666; }
-        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1f1f27; }
-        .info-count { background: #1f1f27; color: #a78bfa; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; }
+        .modal-content {
+            background-color: #121217;
+            margin: 5vh auto;
+            padding: 0 30px 30px 30px;
+            border: 1px solid #2a2a35;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 24px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            max-height: 85vh; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+        }
+
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: transparent; }
+        .modal-content::-webkit-scrollbar-thumb { background: #a78bfa; border-radius: 10px; }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: #121217;
+            padding: 30px 0 20px 0;
+            margin-bottom: 10px;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .close-x {
+            cursor: pointer;
+            font-size: 28px;
+            color: #666;
+            transition: 0.3s;
+            line-height: 1;
+        }
+        .close-x:hover { color: #fff; }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #1f1f27;
+        }
+        .info-row:last-child { border-bottom: none; }
+
+        .info-label { color: #ccc; font-weight: 500; font-size: 0.95rem; }
+        .info-count {
+            background: #1f1f27;
+            color: #7d7d8e;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        footer { margin-top: 80px; padding-bottom: 40px; opacity: 0.3; font-size: 0.8rem; }
     </style>
 </head>
 <body>
+
     <div id="infoModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -266,7 +344,7 @@
     <div class="container">
         <div id="main-view" class="page-view">
             <h1>xfendziak</h1>
-            <p class="subtitle">Siemka, jestem grafikiem od listopada 2025 roku! <br>Tworzę tanio, sprawnie i z pasją.</p>
+            <p class="subtitle">Siemka jestem grafikiem od listopada 2025 roku! <br>Tanio i Sprawnie</p>
 
             <div class="stats-grid">
                 <div class="stat-card">
@@ -275,18 +353,18 @@
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">20+</span>
-                    <span class="stat-label">Zadowolonych Klientów</span>
+                    <span class="stat-label">Klienci</span>
                 </div>
             </div>
 
-            <h2 class="software-title">Mój warsztat pracy</h2>
+            <h2 class="software-title">Programy, których używam</h2>
             <div class="software-grid">
                 <div class="software-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS" width="35">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS">
                     <span>Photoshop</span>
                 </div>
                 <div class="software-card">
-                    <img src="https://www.maxon.net/favicon.ico" alt="C4D" style="filter: brightness(1.5);" width="35">
+                    <img src="https://www.maxon.net/favicon.ico" alt="C4D" style="filter: brightness(1.5);">
                     <span>Cinema 4D</span>
                 </div>
             </div>
@@ -295,6 +373,7 @@
         <div id="shop-view" class="page-view">
             <div class="shop-title">Sklep CoreVisuals</div>
             <div class="shop-grid">
+                
                 <div class="shop-card">
                     <div class="product-img">
                         <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Basic Pack">
@@ -306,20 +385,72 @@
                         <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
                 </div>
+
+                <div class="shop-card">
+                    <div class="product-img">
+                        <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Medium Pack">
+                    </div>
+                    <span class="product-name">CorePack - Medium</span>
+                    <span class="product-price">10.00 PLN</span>
+                    <div class="buy-group">
+                        <button onclick="openInfo('medium')" class="info-btn">i</button>
+                        <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
+                    </div>
                 </div>
+
+                <div class="shop-card">
+                    <div class="product-img">
+                        <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Core Pack">
+                    </div>
+                    <span class="product-name">CorePack - Core</span>
+                    <span class="product-price">15.00 PLN</span>
+                    <div class="buy-group">
+                        <button onclick="openInfo('core')" class="info-btn">i</button>
+                        <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <footer>
-            © 2026 xfendziak. Wszystkie projekty wykonane z dbałością o detale.
+            © 2026 xfendziak. Wszelkie prawa zastrzeżone.
         </footer>
     </div>
 
     <script>
-        // Logika JavaScript pozostaje bez zmian
         const packData = {
-            'basic': { title: 'CorePack Basic', items: [['tła zwykłe', 'x3'], ['tła zniszczonego terenu', 'x2'], ['dodatków', 'x5'], ['obramówek', 'x5'], ['napisy live', 'x3'], ['blaski światła', 'x4'], ['ogień', 'x1'], ['śnieg', 'x1'], ['enchantowe literki', 'x12']] },
-            'medium': { title: 'CorePack Medium', items: [['tła zwykłe', 'x6'], ['tła zniszczonego terenu', 'x4'], ['dodatków', 'x10'], ['emotek pixelart', 'x20']] },
-            'core': { title: 'CorePack Core', items: [['tła zwykłe', 'x9'], ['tła zniszczonego terenu', 'x6'], ['dodatków', 'x16']] }
+            'basic': {
+                title: 'CorePack Basic',
+                items: [
+                    ['tła zwykłe', 'x3'], ['tła zniszczonego terenu', 'x2'], ['dodatków', 'x5'],
+                    ['obramówek', 'x5'], ['napisy live', 'x3'], ['blaski światła', 'x4'],
+                    ['ogień', 'x1'], ['śnieg', 'x1'], ['enchantowe literki', 'x12']
+                ]
+            },
+            'medium': {
+                title: 'CorePack Medium',
+                items: [
+                    ['tła zwykłe', 'x6'], ['tła zniszczonego terenu', 'x4'], ['dodatków', 'x10'],
+                    ['emotek pixelart', 'x20'], ['strzałek', 'x12'], ['obramówek', 'x7'],
+                    ['napisy live', 'x5'], ['napisy inne', 'x2'], ['layerstyle', 'x12'],
+                    ['blaski światła', 'x7'], ['dym', 'x1'], ['pioruny', 'x2'],
+                    ['ognie', 'x3'], ['śniegi', 'x2'], ['liście jesienne', 'x2'],
+                    ['enchantowe literki', 'x12'], ['logo rapy', 'x3'], ['paski itemów', 'x5']
+                ]
+            },
+            'core': {
+                title: 'CorePack Core',
+                items: [
+                    ['tła zwykłe', 'x9'], ['tła zniszczonego terenu', 'x6'], ['dodatków', 'x16'],
+                    ['emotek pixelart', 'x30'], ['strzałek', 'x21'], ['obramówek', 'x10'],
+                    ['napisy live', 'x10'], ['napisy inne', 'x4'], ['layerstyle', 'x15'],
+                    ['blaski światła', 'x11'], ['dymy', 'x2'], ['pioruny', 'x4'],
+                    ['ognie', 'x3'], ['śniegi', 'x2'], ['liście jesienne', 'x2'],
+                    ['enchantowe literki', 'x12'], ['particle inne', 'x7'], ['serca hardcore', 'x1'],
+                    ['logo rapy', 'x3'], ['paski itemów', 'x11']
+                ]
+            }
         };
 
         function openInfo(packKey) {
@@ -328,14 +459,38 @@
             const listContainer = document.getElementById('modalList');
             listContainer.innerHTML = ''; 
             pack.items.forEach(item => {
-                listContainer.innerHTML += `<div class="info-row"><span class="info-label">${item[0]}</span><span class="info-count">${item[1]}</span></div>`;
+                listContainer.innerHTML += `
+                    <div class="info-row">
+                        <span class="info-label">${item[0]}</span>
+                        <span class="info-count">${item[1]}</span>
+                    </div>`;
             });
             document.getElementById('infoModal').style.display = "block";
+            document.querySelector('.modal-content').scrollTop = 0;
         }
-        function closeModal() { document.getElementById('infoModal').style.display = "none"; }
-        window.onclick = function(event) { if (event.target == document.getElementById('infoModal')) { closeModal(); } }
-        function showShop() { document.getElementById('main-view').style.display = 'none'; document.getElementById('shop-view').style.display = 'block'; }
-        function showMain() { document.getElementById('shop-view').style.display = 'none'; document.getElementById('main-view').style.display = 'block'; }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target == modal) { closeModal(); }
+        }
+
+        function showShop() {
+            document.getElementById('main-view').style.display = 'none';
+            const shop = document.getElementById('shop-view');
+            shop.style.display = 'block';
+            shop.style.animation = 'none'; shop.offsetHeight; shop.style.animation = null; 
+        }
+
+        function showMain() {
+            document.getElementById('shop-view').style.display = 'none';
+            const main = document.getElementById('main-view');
+            main.style.display = 'block';
+            main.style.animation = 'none'; main.offsetHeight; main.style.animation = null;
+        }
     </script>
 </body>
 </html>
