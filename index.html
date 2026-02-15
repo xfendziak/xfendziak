@@ -151,7 +151,6 @@
 
         .buy-group { display: flex; gap: 10px; }
         
-        /* MODYFIKACJA INFO BTN DLA POPUPU */
         .info-btn { 
             background: rgba(255,255,255,0.05); 
             width: 45px; height: 45px; 
@@ -184,7 +183,7 @@
         }
         .zakup-btn:hover { background: #a78bfa; color: black; transform: scale(1.02); }
 
-        /* STYLE OKNA MODALNEGO (POP-UP) */
+        /* STYLE OKNA MODALNEGO (POP-UP) - POPRAWIONE PRZEWIJANIE */
         .modal {
             display: none;
             position: fixed;
@@ -200,7 +199,7 @@
 
         .modal-content {
             background-color: #121217;
-            margin: 10vh auto;
+            margin: 5vh auto; /* Mniejszy margines od góry */
             padding: 30px;
             border: 1px solid #2a2a35;
             width: 90%;
@@ -208,6 +207,22 @@
             border-radius: 24px;
             position: relative;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            
+            /* TO UMOŻLIWIA PRZEWIJANIE: */
+            max-height: 85vh; 
+            overflow-y: auto; 
+        }
+
+        /* Styl paska przewijania (Scrollbar) */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #a78bfa;
+            border-radius: 10px;
         }
 
         .modal-header {
@@ -215,6 +230,11 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            position: sticky; /* Nagłówek zostaje na górze podczas scrolowania */
+            top: 0;
+            background-color: #121217;
+            padding-bottom: 10px;
+            z-index: 10;
         }
 
         .modal-header h2 {
@@ -381,7 +401,6 @@
                     ['enchantowe literki', 'x12'],
                     ['logo rapy', 'x3'],
                     ['paski itemów', 'x5']
-                    
                 ]
             },
             'core': {
@@ -428,6 +447,8 @@
             });
             
             document.getElementById('infoModal').style.display = "block";
+            // Resetowanie pozycji przewijania przy każdym otwarciu
+            document.querySelector('.modal-content').scrollTop = 0;
         }
 
         function closeModal() {
