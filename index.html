@@ -86,7 +86,7 @@
 
         .subtitle { opacity: 0.6; margin: 20px 0 50px 0; font-size: 1.1rem; }
 
-        #shop-view { display: none; }
+        #shop-view, #portfolio-view { display: none; }
 
         /* KARTY STATYSTYK */
         .stats-grid {
@@ -155,6 +155,75 @@
             font-weight: 800;
             font-size: 1.1rem;
             color: #fff;
+        }
+
+        /* PORTFOLIO SECTION */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #a78bfa;
+            color: black;
+            border-color: #a78bfa;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .portfolio-item:hover { transform: translateY(-5px); border-color: #a78bfa; }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-desc {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .portfolio-tag {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: #a78bfa;
+            font-weight: 800;
+        }
+
+        .portfolio-name {
+            display: block;
+            font-weight: 700;
+            margin-top: 5px;
         }
 
         /* SKLEP */
@@ -301,13 +370,14 @@
         <div class="nav-logo" onclick="showMain()">xfendziak</div>
         <div class="nav-links">
             <a onclick="showMain()">Strona główna</a>
-            <a href="#">Portfolio</a>
+            <a onclick="showPortfolio()">Portfolio</a>
             <a onclick="showShop()">Sklep</a>
             <a href="https://discord.gg/7PWtcsybV3" class="nav-btn" target="_blank">CoreVisuals</a>
         </div>
     </nav>
 
     <div class="container">
+        
         <div id="main-view" class="page-view">
             <h1>xfendziak</h1>
             <p class="subtitle">Siemka jestem grafikiem od listopada 2025 roku! <br>Tanio i Sprawnie</p>
@@ -336,6 +406,47 @@
                 <div class="software-card">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VSC">
                     <span>VS Code</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="portfolio-view" class="page-view">
+            <h1>Portfolio</h1>
+            <p class="subtitle">Przeglądaj moje projekty</p>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterItems('all', this)">Wszystko</button>
+                <button class="filter-btn" onclick="filterItems('miniaturki', this)">Miniaturki</button>
+                <button class="filter-btn" onclick="filterItems('profilowe', this)">Profilowe</button>
+                <button class="filter-btn" onclick="filterItems('banery-yt', this)">Banery YT</button>
+                <button class="filter-btn" onclick="filterItems('banery-dc', this)">Banery DC</button>
+                <button class="filter-btn" onclick="filterItems('boty', this)">Boty Discord</button>
+                <button class="filter-btn" onclick="filterItems('strony', this)">Strony</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolio-grid">
+                <div class="portfolio-item" data-category="miniaturki">
+                    <img src="https://via.placeholder.com/600x400/1e1135/ffffff?text=Miniaturka+1" alt="Praca">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Miniaturka</span>
+                        <span class="portfolio-name">Projekt dla Gracza</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="banery-yt">
+                    <img src="https://via.placeholder.com/600x400/1e1135/ffffff?text=Baner+YT+1" alt="Praca">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Baner YT</span>
+                        <span class="portfolio-name">CoreVisuals Branding</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="boty">
+                    <img src="https://via.placeholder.com/600x400/1e1135/ffffff?text=Bot+Discord" alt="Praca">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Bot Discord</span>
+                        <span class="portfolio-name">System Ekonomii</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -446,14 +557,43 @@
             if (event.target == document.getElementById('infoModal')) { closeModal(); }
         }
 
+        // NAWIGACJA
         function showShop() {
-            document.getElementById('main-view').style.display = 'none';
+            hideAll();
             document.getElementById('shop-view').style.display = 'block';
         }
 
         function showMain() {
-            document.getElementById('shop-view').style.display = 'none';
+            hideAll();
             document.getElementById('main-view').style.display = 'block';
+        }
+
+        function showPortfolio() {
+            hideAll();
+            document.getElementById('portfolio-view').style.display = 'block';
+        }
+
+        function hideAll() {
+            document.getElementById('main-view').style.display = 'none';
+            document.getElementById('shop-view').style.display = 'none';
+            document.getElementById('portfolio-view').style.display = 'none';
+        }
+
+        // FILTROWANIE PORTFOLIO
+        function filterItems(category, btn) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
