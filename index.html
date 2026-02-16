@@ -64,8 +64,9 @@
         }
 
         /* ANIMACJA PRZEJŚCIA */
-        .page-view {
+        .page-view, .category-view {
             animation: slideUpFade 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            display: none;
         }
 
         @keyframes slideUpFade {
@@ -85,8 +86,6 @@
 
         .subtitle { opacity: 0.6; margin: 20px 0 50px 0; font-size: 1.1rem; }
 
-        #shop-view, #portfolio-view { display: none; }
-
         /* KARTY STATYSTYK */
         .stats-grid {
             display: grid;
@@ -103,76 +102,10 @@
             transition: 0.3s;
         }
         .stat-card:hover { background: rgba(255, 255, 255, 0.04); transform: translateY(-5px); }
-
         .stat-number { display: block; font-size: 2.5rem; font-weight: 800; color: #a78bfa; }
         .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5; margin-top: 5px; display: block; }
 
-        /* SOFTWARE SECTION */
-        .software-title {
-            margin-top: 100px; 
-            font-size: 1.5rem; 
-            opacity: 0.9; 
-            letter-spacing: -0.5px; 
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .software-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 35px;
-        }
-
-        .software-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px 35px;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .software-card:hover {
-            background: rgba(167, 139, 250, 0.15);
-            border-color: #a78bfa;
-            transform: scale(1.05);
-        }
-
-        .software-card img { width: 32px; height: 32px; object-fit: contain; }
-        .software-card span { font-weight: 800; font-size: 1.1rem; color: #fff; }
-
-        /* PORTFOLIO SECTION */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: #a78bfa;
-            color: black;
-            border-color: #a78bfa;
-        }
-
+        /* PORTFOLIO GRID */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -185,9 +118,13 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
-        .portfolio-item:hover { transform: translateY(-5px); border-color: #a78bfa; }
+        .portfolio-item:hover { transform: translateY(-5px); border-color: #a78bfa; background: rgba(167, 139, 250, 0.05); }
 
         .portfolio-item img {
             width: 100%;
@@ -196,146 +133,55 @@
             display: block;
         }
 
-        .portfolio-desc {
-            padding: 15px;
-            text-align: left;
-        }
-
-        .portfolio-tag {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            color: #a78bfa;
-            font-weight: 800;
-        }
-
-        .portfolio-name {
-            display: block;
-            font-weight: 700;
-            margin-top: 5px;
-        }
+        .portfolio-desc { padding: 15px; text-align: left; }
+        .portfolio-tag { font-size: 0.6rem; text-transform: uppercase; color: #a78bfa; font-weight: 800; }
+        .portfolio-name { display: block; font-weight: 700; margin-top: 5px; }
 
         /* SKLEP */
-        .shop-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; }
-        
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .shop-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 20px;
-            text-align: left;
-            transition: 0.4s;
-        }
-
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .shop-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 20px; text-align: left; transition: 0.4s; }
         .shop-card:hover { transform: translateY(-12px); border-color: #a78bfa; }
-
-        .product-img {
-            width: 100%;
-            height: 250px;
-            background: #16161e;
-            border-radius: 16px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.6s transform;
-        }
-
+        .product-img { width: 100%; height: 250px; background: #16161e; border-radius: 16px; margin-bottom: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s transform; }
         .shop-card:hover .product-img img { transform: scale(1.1); }
-
         .product-name { font-size: 1.2rem; font-weight: 800; display: block; }
         .product-price { color: #a78bfa; font-weight: 700; margin: 5px 0 20px 0; display: block; font-size: 1.1rem; }
 
-        .buy-group { display: flex; gap: 10px; }
-        
-        .info-btn { 
-            background: rgba(255,255,255,0.05); 
-            width: 45px; height: 45px; 
-            border-radius: 12px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: white; 
-            transition: 0.3s; 
-            cursor: pointer;
-            border: none;
-        }
-        
-        .zakup-btn { 
-            flex-grow: 1; 
-            background: rgba(167, 139, 250, 0.15); 
-            color: #a78bfa; 
-            border: 1px solid rgba(167, 139, 250, 0.3); 
-            padding: 12px; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            font-weight: 800; 
-            text-align: center; 
-            transition: 0.3s; 
-            font-size: 0.85rem;
-        }
+        .zakup-btn { flex-grow: 1; background: rgba(167, 139, 250, 0.15); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.3); padding: 12px; border-radius: 12px; text-decoration: none; font-weight: 800; text-align: center; transition: 0.3s; font-size: 0.85rem; }
         .zakup-btn:hover { background: #a78bfa; color: black; }
+        .info-btn { background: rgba(255,255,255,0.05); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; cursor: pointer; border: none; margin-right: 10px; }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #a78bfa;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid #a78bfa;
+            padding: 10px 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: #a78bfa; color: black; }
 
         /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
-        }
-
-        .modal-content {
-            background-color: #121217;
-            margin: 5vh auto;
-            padding: 0 30px 30px 30px;
-            border: 1px solid #2a2a35;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 24px;
-            max-height: 85vh; 
-            overflow-y: auto; 
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            background-color: #121217;
-            padding: 30px 0 20px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .close-x { cursor: pointer; font-size: 28px; color: #666; }
-
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
+        .modal-content { background-color: #121217; margin: 5vh auto; padding: 0 30px 30px 30px; border: 1px solid #2a2a35; width: 90%; max-width: 400px; border-radius: 24px; max-height: 85vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background-color: #121217; padding: 30px 0 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1f1f27; }
-        .info-label { color: #ccc; font-size: 0.95rem; }
         .info-count { background: #1f1f27; color: #a78bfa; padding: 4px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: bold; }
 
         footer { margin-top: 80px; padding-bottom: 40px; opacity: 0.3; font-size: 0.8rem; }
     </style>
 </head>
-<body>
+<body onload="showMain()">
 
     <div id="infoModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modalTitle">NAZWA PACZKI</h2>
-                <span class="close-x" onclick="closeModal()">&times;</span>
+                <span style="cursor:pointer; font-size: 28px;" onclick="closeModal()">&times;</span>
             </div>
             <div id="modalList"></div>
         </div>
@@ -356,135 +202,108 @@
         <div id="main-view" class="page-view">
             <h1>xfendziak</h1>
             <p class="subtitle">Siemka jestem grafikiem od listopada 2025 roku! <br>Tanio i Sprawnie</p>
-
             <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Miesiące Doświadczenia</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">20+</span>
-                    <span class="stat-label">Klienci</span>
-                </div>
+                <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Miesiące Doświadczenia</span></div>
+                <div class="stat-card"><span class="stat-number">20+</span><span class="stat-label">Klienci</span></div>
             </div>
-
-            <h2 class="software-title">Programy, których używam</h2>
-            <div class="software-grid">
-                <div class="software-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="PS">
-                    <span>Photoshop</span>
-                </div>
-                <div class="software-card">
-                    <img src="https://www.maxon.net/favicon.ico" alt="C4D" style="filter: brightness(1.5);">
-                    <span>Cinema 4D</span>
-                </div>
-                <div class="software-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VSC">
-                    <span>VS Code</span>
-                </div>
-            </div>
+            <button class="zakup-btn" style="padding: 15px 40px; font-size: 1rem;" onclick="showPortfolio()">ZOBACZ MOJE PRACE</button>
         </div>
 
         <div id="portfolio-view" class="page-view">
             <h1>Portfolio</h1>
-            <p class="subtitle">Przeglądaj moje projekty</p>
-            
-            <div class="filter-container">
-                <button class="filter-btn active" onclick="filterItems('all', this)">Wszystko</button>
-                <button class="filter-btn" onclick="filterItems('miniaturki', this)">Miniaturki</button>
-                <button class="filter-btn" onclick="filterItems('profilowe', this)">Profilowe</button>
-                <button class="filter-btn" onclick="filterItems('banery-yt', this)">Banery YT</button>
-                <button class="filter-btn" onclick="filterItems('banery-dc', this)">Banery DC</button>
-                <button class="filter-btn" onclick="filterItems('boty', this)">Boty Discord</button>
-                <button class="filter-btn" onclick="filterItems('strony', this)">Strony</button>
-            </div>
-
-            <div class="portfolio-grid" id="portfolio-grid">
-                <div class="portfolio-item" data-category="miniaturki">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Miniaturka">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Miniaturki</span>
-                        <span class="portfolio-name">Projekty dla graczy</span>
-                    </div>
+            <p class="subtitle">Wybierz kategorię, która Cię interesuje</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="showCategory('miniaturki')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="">
+                    <div class="portfolio-desc"><span class="portfolio-tag">Miniaturki</span><span class="portfolio-name">Projekty dla graczy</span></div>
                 </div>
-
-                <div class="portfolio-item" data-category="profilowe">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Profilowe">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Profilowe</span>
-                        <span class="portfolio-name">Avatary dla twórców</span>
-                    </div>
+                <div class="portfolio-item" onclick="showCategory('profilowe')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="">
+                    <div class="portfolio-desc"><span class="portfolio-tag">Profilowe</span><span class="portfolio-name">Avatary dla twórców</span></div>
                 </div>
-
-                <div class="portfolio-item" data-category="banery-dc">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Baner DC">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Banery dc</span>
-                        <span class="portfolio-name">Brandingi avaratów</span>
-                    </div>
+                <div class="portfolio-item" onclick="showCategory('banery-dc')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="">
+                    <div class="portfolio-desc"><span class="portfolio-tag">Banery DC</span><span class="portfolio-name">Brandingi serwerów</span></div>
                 </div>
-
-                <div class="portfolio-item" data-category="banery-yt">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Baner YT">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Banery yt</span>
-                        <span class="portfolio-name">Brandingi kanałów</span>
-                    </div>
+                <div class="portfolio-item" onclick="showCategory('banery-yt')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="">
+                    <div class="portfolio-desc"><span class="portfolio-tag">Banery YT</span><span class="portfolio-name">Brandingi kanałów</span></div>
                 </div>
-
-                <div class="portfolio-item" data-category="boty">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Bot">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Boty dc</span>
-                        <span class="portfolio-name">Systemy serwerów</span>
-                    </div>
+                <div class="portfolio-item" onclick="showCategory('boty')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="">
+                    <div class="portfolio-desc"><span class="portfolio-tag">Boty DC</span><span class="portfolio-name">Systemy serwerów</span></div>
                 </div>
-
-                <div class="portfolio-item" data-category="strony">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Strona">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Strony www</span>
-                        <span class="portfolio-name">Dla wymagających</span>
-                    </div>
+                <div class="portfolio-item" onclick="showCategory('strony')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="">
+                    <div class="portfolio-desc"><span class="portfolio-tag">Strony WWW</span><span class="portfolio-name">Dla wymagających</span></div>
                 </div>
             </div>
         </div>
 
+        <div id="cat-miniaturki" class="category-view">
+            <a class="back-btn" onclick="showPortfolio()">← Powrót</a>
+            <h1>Miniaturki</h1>
+            <div class="portfolio-grid">
+                <div class="portfolio-item"><img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Praca"></div>
+            </div>
+        </div>
+
+        <div id="cat-profilowe" class="category-view">
+            <a class="back-btn" onclick="showPortfolio()">← Powrót</a>
+            <h1>Profilowe</h1>
+            <p class="subtitle">Moje awatary</p>
+        </div>
+
+        <div id="cat-banery-dc" class="category-view">
+            <a class="back-btn" onclick="showPortfolio()">← Powrót</a>
+            <h1>Banery Discord</h1>
+        </div>
+
+        <div id="cat-banery-yt" class="category-view">
+            <a class="back-btn" onclick="showPortfolio()">← Powrót</a>
+            <h1>Banery YouTube</h1>
+        </div>
+
+        <div id="cat-boty" class="category-view">
+            <a class="back-btn" onclick="showPortfolio()">← Powrót</a>
+            <h1>Boty Discord</h1>
+        </div>
+
+        <div id="cat-strony" class="category-view">
+            <a class="back-btn" onclick="showPortfolio()">← Powrót</a>
+            <h1>Strony WWW</h1>
+        </div>
+
         <div id="shop-view" class="page-view">
-            <div class="shop-title">Sklep CoreVisuals</div>
+            <h1>Sklep</h1>
+            <p class="subtitle">Paczki graficzne CoreVisuals</p>
             <div class="shop-grid">
                 
                 <div class="shop-card">
-                    <div class="product-img">
-                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739237467258900/basic.png?ex=6993aacc&is=6992594c&hm=32b420c4a43e4b86b6cf096681b75780edd68bcf846acd0b43b762746c2840c6&">
-                    </div>
+                    <div class="product-img"><img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739237467258900/basic.png"></div>
                     <span class="product-name">CorePack - Basic</span>
                     <span class="product-price">5.00 PLN</span>
-                    <div class="buy-group">
+                    <div style="display:flex">
                         <button onclick="openInfo('basic')" class="info-btn">i</button>
                         <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
                 </div>
 
                 <div class="shop-card">
-                    <div class="product-img">
-                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739243112534077/med.png?ex=6993aacd&is=6992594d&hm=ae0d4163153fa3bea063c39f8163c9febd6466b40f011be963c7e0d48aa508bd&">
-                    </div>
+                    <div class="product-img"><img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739243112534077/med.png"></div>
                     <span class="product-name">CorePack - Medium</span>
                     <span class="product-price">10.00 PLN</span>
-                    <div class="buy-group">
+                    <div style="display:flex">
                         <button onclick="openInfo('medium')" class="info-btn">i</button>
                         <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
                 </div>
 
                 <div class="shop-card">
-                    <div class="product-img">
-                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472740672217026631/core.png?ex=6993ac22&is=69925aa2&hm=141eec9fe1c3acb4a2fda1bb7809039335748f8f543f5abc7107b6a110345f34&">
-                    </div>
+                    <div class="product-img"><img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472740672217026631/core.png"></div>
                     <span class="product-name">CorePack - Core</span>
                     <span class="product-price">15.00 PLN</span>
-                    <div class="buy-group">
+                    <div style="display:flex">
                         <button onclick="openInfo('core')" class="info-btn">i</button>
                         <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
                     </div>
@@ -493,94 +312,52 @@
             </div>
         </div>
 
-        <footer>
-            © 2026 xfendziak. Wszelkie prawa zastrzeżone.
-        </footer>
+        <footer>© 2026 xfendziak. Wszelkie prawa zastrzeżone.</footer>
     </div>
 
     <script>
         const packData = {
-            'basic': {
-                title: 'CorePack Basic',
-                items: [
-                    ['tła zwykłe', 'x3'], ['tła zniszczonego terenu', 'x2'], ['dodatków', 'x5'],
-                    ['obramówek', 'x5'], ['napisy live', 'x3'], ['blaski światła', 'x4'],
-                    ['ogień', 'x1'], ['śnieg', 'x1'], ['enchantowe literki', 'x12']
-                ]
+            'basic': { 
+                title: 'CorePack Basic', 
+                items: [['tła zwykłe', 'x3'], ['tła zniszczonego terenu', 'x2'], ['dodatków', 'x5'], ['obramówek', 'x5'], ['napisy live', 'x3'], ['blaski światła', 'x4']] 
             },
-            'medium': {
-                title: 'CorePack Medium',
-                items: [
-                    ['tła zwykłe', 'x6'], ['tła zniszczonego terenu', 'x4'], ['dodatków', 'x10'],
-                    ['emotek pixelart', 'x20'], ['strzałek', 'x12'], ['obramówek', 'x7'],
-                    ['napisy live', 'x5'], ['napisy inne', 'x2'], ['layerstyle', 'x12'],
-                    ['blaski światła', 'x7'], ['dym', 'x1'], ['pioruny', 'x2'],
-                    ['ognie', 'x3'], ['śniegi', 'x2'], ['liście jesienne', 'x2'],
-                    ['enchantowe literki', 'x12'], ['logo rapy', 'x3'], ['paski itemów', 'x5']
-                ]
+            'medium': { 
+                title: 'CorePack Medium', 
+                items: [['tła zwykłe', 'x6'], ['tła zniszczonego terenu', 'x4'], ['dodatków', 'x10'], ['emotek pixelart', 'x20'], ['strzałek', 'x12'], ['obramówek', 'x7']] 
             },
-            'core': {
-                title: 'CorePack Core',
-                items: [
-                    ['tła zwykłe', 'x9'], ['tła zniszczonego terenu', 'x6'], ['dodatków', 'x16'],
-                    ['emotek pixelart', 'x30'], ['strzałek', 'x21'], ['obramówek', 'x10'],
-                    ['napisy live', 'x10'], ['napisy inne', 'x4'], ['layerstyle', 'x15'],
-                    ['blaski światła', 'x11'], ['dymy', 'x2'], ['pioruny', 'x4'],
-                    ['ognie', 'x3'], ['śniegi', 'x2'], ['liście jesienne', 'x2'],
-                    ['enchantowe literki', 'x12'], ['particle inne', 'x7'], ['serca hardcore', 'x1'],
-                    ['logo rapy', 'x3'], ['paski itemów', 'x11']
-                ]
+            'core': { 
+                title: 'CorePack Core', 
+                items: [['tła zwykłe', 'x9'], ['tła zniszczonego terenu', 'x6'], ['dodatków', 'x16'], ['emotek pixelart', 'x30'], ['strzałek', 'x21'], ['obramówek', 'x10']] 
             }
         };
 
-        function openInfo(packKey) {
-            const pack = packData[packKey];
-            document.getElementById('modalTitle').innerText = pack.title;
-            const listContainer = document.getElementById('modalList');
-            listContainer.innerHTML = ''; 
-            pack.items.forEach(item => {
-                listContainer.innerHTML += `
-                    <div class="info-row">
-                        <span class="info-label">${item[0]}</span>
-                        <span class="info-count">${item[1]}</span>
-                    </div>`;
-            });
-            document.getElementById('infoModal').style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById('infoModal').style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('infoModal')) { closeModal(); }
-        }
-
-        function showShop() { hideAll(); document.getElementById('shop-view').style.display = 'block'; }
         function showMain() { hideAll(); document.getElementById('main-view').style.display = 'block'; }
         function showPortfolio() { hideAll(); document.getElementById('portfolio-view').style.display = 'block'; }
+        function showShop() { hideAll(); document.getElementById('shop-view').style.display = 'block'; }
+        
+        function showCategory(cat) {
+            hideAll();
+            document.getElementById('cat-' + cat).style.display = 'block';
+        }
 
         function hideAll() {
-            document.getElementById('main-view').style.display = 'none';
-            document.getElementById('shop-view').style.display = 'none';
-            document.getElementById('portfolio-view').style.display = 'none';
+            const views = document.querySelectorAll('.page-view, .category-view');
+            views.forEach(v => v.style.display = 'none');
             window.scrollTo(0, 0);
         }
 
-        function filterItems(category, btn) {
-            const items = document.querySelectorAll('.portfolio-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+        function openInfo(key) {
+            const pack = packData[key];
+            document.getElementById('modalTitle').innerText = pack.title;
+            const list = document.getElementById('modalList');
+            list.innerHTML = pack.items.map(i => `<div class="info-row"><span>${i[0]}</span><span class="info-count">${i[1]}</span></div>`).join('');
+            document.getElementById('infoModal').style.display = "block";
+        }
+        function closeModal() { document.getElementById('infoModal').style.display = "none"; }
+        
+        // Zamykanie modala po kliknięciu poza nim
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('infoModal')) { closeModal(); }
         }
     </script>
 </body>
