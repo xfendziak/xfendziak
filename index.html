@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>xfendziak | Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Wymuszenie animacji bezpośrednio w pliku */
+        .page-view {
+            animation: slideUpFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUpFade {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -43,8 +61,8 @@
                     <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.8;">Adobe Photoshop</span>
                 </div>
                 <div class="software-card">
-                    <div style="color: #5d3fd3; font-weight: 800; font-size: 1.8rem; margin-bottom: 5px;">Ae</div>
-                    <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.8;">After Effects</span>
+                    <div style="color: #5d3fd3; font-weight: 800; font-size: 1.8rem; margin-bottom: 5px;">C4D</div>
+                    <span style="font-size: 0.85rem; font-weight: 700; opacity: 0.8;">Cinema 4D</span>
                 </div>
                 <div class="software-card">
                     <div style="color: #007acc; font-weight: 800; font-size: 1.8rem; margin-bottom: 5px;">VS</div>
@@ -53,7 +71,7 @@
             </div>
             
             <div style="margin-top: 60px;">
-                <a href="portfolio.html" class="nav-btn" style="text-decoration:none; padding: 18px 50px !important; font-size: 1rem; border-radius: 20px;">ZOBACZ MOJE PRACE</a>
+                <a href="portfolio.html" class="nav-btn" style="text-decoration:none; padding: 18px 50px !important; font-size: 1rem; border-radius: 20px; display: inline-block;">ZOBACZ MOJE PRACE</a>
             </div>
         </div>
 
