@@ -85,7 +85,7 @@
 
         .subtitle { opacity: 0.6; margin: 20px 0 50px 0; font-size: 1.1rem; }
 
-        #shop-view, #portfolio-view { display: none; }
+        #shop-view, #portfolio-view, #gallery-view { display: none; }
 
         /* KARTY STATYSTYK */
         .stats-grid {
@@ -185,7 +185,7 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
-            cursor: pointer; /* Zmiana kursora na łapkę */
+            cursor: pointer;
         }
 
         .portfolio-item:hover { transform: translateY(-5px); border-color: #a78bfa; }
@@ -213,6 +213,52 @@
             display: block;
             font-weight: 700;
             margin-top: 5px;
+        }
+
+        /* WIDOK GALERII (Po kliknięciu) */
+        .gallery-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: #a78bfa; color: black; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-img-container {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+            cursor: zoom-in;
+        }
+
+        .gallery-img-container:hover {
+            transform: scale(1.02);
+            border-color: #a78bfa;
+        }
+
+        .gallery-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* LIGHTBOX MODAL DLA ZDJĘĆ */
@@ -416,28 +462,18 @@
 
         <div id="portfolio-view" class="page-view">
             <h1>Portfolio</h1>
-            <p class="subtitle">Zobacz moje najnowsze realizacje i projekty</p>
+            <p class="subtitle">Wybierz kategorię, aby zobaczyć moje prace</p>
             
-            <div class="filter-container">
-                <button class="filter-btn active" onclick="filterItems('all', this)">Wszystko</button>
-                <button class="filter-btn" onclick="filterItems('miniaturki', this)">Miniaturki</button>
-                <button class="filter-btn" onclick="filterItems('profilowe', this)">Profilowe</button>
-                <button class="filter-btn" onclick="filterItems('banery-yt', this)">Banery YT</button>
-                <button class="filter-btn" onclick="filterItems('banery-dc', this)">Banery DC</button>
-                <button class="filter-btn" onclick="filterItems('boty', this)">Boty Discord</button>
-                <button class="filter-btn" onclick="filterItems('strony', this)">Strony</button>
-            </div>
-
             <div class="portfolio-grid" id="portfolio-grid">
-                <div class="portfolio-item" data-category="miniaturki" onclick="openLightbox(this)">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Miniaturka">
+                <div class="portfolio-item" onclick="openGallery('miniaturki')">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Miniatury">
                     <div class="portfolio-desc">
                         <span class="portfolio-tag">Miniaturki</span>
                         <span class="portfolio-name">Dynamiczne miniatury Gamingowe</span>
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="profilowe" onclick="openLightbox(this)">
+                <div class="portfolio-item" onclick="openGallery('profilowe')">
                     <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Profilowe">
                     <div class="portfolio-desc">
                         <span class="portfolio-tag">Profilowe</span>
@@ -445,7 +481,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="banery-dc" onclick="openLightbox(this)">
+                <div class="portfolio-item" onclick="openGallery('banery-dc')">
                     <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Baner DC">
                     <div class="portfolio-desc">
                         <span class="portfolio-tag">Banery DC</span>
@@ -453,7 +489,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="banery-yt" onclick="openLightbox(this)">
+                <div class="portfolio-item" onclick="openGallery('banery-yt')">
                     <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Baner YT">
                     <div class="portfolio-desc">
                         <span class="portfolio-tag">Banery YT</span>
@@ -461,7 +497,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="boty" onclick="openLightbox(this)">
+                <div class="portfolio-item" onclick="openGallery('boty')">
                     <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Bot">
                     <div class="portfolio-desc">
                         <span class="portfolio-tag">Boty DC</span>
@@ -469,7 +505,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item" data-category="strony" onclick="openLightbox(this)">
+                <div class="portfolio-item" onclick="openGallery('strony')">
                     <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png" alt="Strona">
                     <div class="portfolio-desc">
                         <span class="portfolio-tag">Strony WWW</span>
@@ -477,6 +513,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div id="gallery-view" class="page-view">
+            <div class="gallery-header">
+                <button class="back-btn" onclick="showPortfolio()">← Powrót do Portfolio</button>
+                <h1 id="gallery-title">Kategoria</h1>
+                <p class="subtitle">Moje przykładowe realizacje</p>
+            </div>
+            <div class="gallery-grid" id="gallery-grid">
+                </div>
         </div>
 
         <div id="shop-view" class="page-view">
@@ -529,6 +575,51 @@
     </div>
 
     <script>
+        // TUTAJ WKLEJ LINKI DO SWOICH GRAFIK DLA KAŻDEJ KATEGORII
+        const galleryData = {
+            'miniaturki': {
+                title: 'Miniaturki',
+                images: [
+                    'https://via.placeholder.com/600x400/2a1a4a/ffffff?text=Miniaturka+1',
+                    'https://via.placeholder.com/600x400/2a1a4a/ffffff?text=Miniaturka+2',
+                    'https://via.placeholder.com/600x400/2a1a4a/ffffff?text=Miniaturka+3'
+                ]
+            },
+            'profilowe': {
+                title: 'Profilowe / Avatary',
+                images: [
+                    'https://via.placeholder.com/600x600/2a1a4a/ffffff?text=Avatar+1',
+                    'https://via.placeholder.com/600x600/2a1a4a/ffffff?text=Avatar+2'
+                ]
+            },
+            'banery-dc': {
+                title: 'Banery Discord',
+                images: [
+                    'https://via.placeholder.com/800x300/2a1a4a/ffffff?text=Baner+Discord+1',
+                    'https://via.placeholder.com/800x300/2a1a4a/ffffff?text=Baner+Discord+2'
+                ]
+            },
+            'banery-yt': {
+                title: 'Banery YouTube',
+                images: [
+                    'https://via.placeholder.com/1000x300/2a1a4a/ffffff?text=Baner+YT+1'
+                ]
+            },
+            'boty': {
+                title: 'Boty Discord',
+                images: [
+                    'https://via.placeholder.com/600x400/2a1a4a/ffffff?text=System+Weryfikacji',
+                    'https://via.placeholder.com/600x400/2a1a4a/ffffff?text=System+Ekonomii'
+                ]
+            },
+            'strony': {
+                title: 'Strony WWW',
+                images: [
+                    'https://via.placeholder.com/800x600/2a1a4a/ffffff?text=Landing+Page+1'
+                ]
+            }
+        };
+
         const packData = {
             'basic': {
                 title: 'CorePack Basic',
@@ -563,10 +654,30 @@
             }
         };
 
-        // Funkcja otwierająca zdjęcie na cały ekran
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            document.getElementById('lightbox-img').src = imgSrc;
+        // Funkcja otwierająca galerię konkretnej kategorii
+        function openGallery(category) {
+            const data = galleryData[category];
+            if(!data) return;
+
+            document.getElementById('gallery-title').innerText = data.title;
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = '';
+
+            data.images.forEach(imgUrl => {
+                grid.innerHTML += `
+                    <div class="gallery-img-container" onclick="openLightboxDirect('${imgUrl}')">
+                        <img src="${imgUrl}" alt="Realizacja">
+                    </div>
+                `;
+            });
+
+            hideAll();
+            document.getElementById('gallery-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function openLightboxDirect(src) {
+            document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
         }
 
@@ -601,23 +712,8 @@
             document.getElementById('main-view').style.display = 'none';
             document.getElementById('shop-view').style.display = 'none';
             document.getElementById('portfolio-view').style.display = 'none';
+            document.getElementById('gallery-view').style.display = 'none';
             window.scrollTo(0, 0);
-        }
-
-        function filterItems(category, btn) {
-            const items = document.querySelectorAll('.portfolio-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
         }
 
         function handleRouting() {
