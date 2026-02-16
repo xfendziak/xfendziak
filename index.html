@@ -385,109 +385,85 @@
             </div>
         </div>
 
-        <div id="portfolio-view" class="page-view">
-            <h1>Portfolio</h1>
-            <p class="subtitle">Przeglądaj moje projekty</p>
+<div class="container">
+
+        <section id="portfolio" class="page-view" style="display: block;">
+            <div class="exit-portfolio-btn" onclick="window.location.href='#home'">
+                <i class="fas fa-arrow-left"></i> Strona główna
+            </div>
+            <h1 style="margin-bottom: 40px;">Moje Projekty</h1>
             
-            <div class="filter-container">
-                <button class="filter-btn active" onclick="filterItems('all', this)">Wszystko</button>
-                <button class="filter-btn" onclick="filterItems('miniaturki', this)">Miniaturki</button>
-                <button class="filter-btn" onclick="filterItems('profilowe', this)">Profilowe</button>
-                <button class="filter-btn" onclick="filterItems('banery-yt', this)">Banery YT</button>
-                <button class="filter-btn" onclick="filterItems('banery-dc', this)">Banery DC</button>
-                <button class="filter-btn" onclick="filterItems('boty', this)">Boty Discord</button>
-                <button class="filter-btn" onclick="filterItems('strony', this)">Strony</button>
-            </div>
-
-            <div class="portfolio-grid" id="portfolio-grid">
-                <div class="portfolio-item" data-category="miniaturki">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Miniaturka">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Miniaturki</span>
-                        <span class="portfolio-name">Projekty dla graczy</span>
-                    </div>
+            <div id="grid" class="portfolio-grid">
+                <div class="card" onclick="openGallery('banery')">
+                    <h2>BANERY</h2>
                 </div>
-
-                <div class="portfolio-item" data-category="profilowe">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Profilowe">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Profilowe</span>
-                        <span class="portfolio-name">Avatary dla twórców</span>
-                    </div>
+                <div class="card" onclick="openGallery('miniaturki-live')">
+                    <h2>MINIATURKI LIVE</h2>
                 </div>
-
-                <div class="portfolio-item" data-category="banery-dc">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Baner DC">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Banery dc</span>
-                        <span class="portfolio-name">Brandingi avaratów</span>
-                    </div>
+                <div class="card" onclick="openGallery('miniaturki-zwykle')">
+                    <h2>MINIATURKI ZWYKŁE</h2>
                 </div>
-
-                <div class="portfolio-item" data-category="banery-yt">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Baner YT">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Banery yt</span>
-                        <span class="portfolio-name">Brandingi kanałów</span>
-                    </div>
+                <div class="card" onclick="openGallery('profilowe')">
+                    <h2>PROFILOWE</h2>
                 </div>
-
-                <div class="portfolio-item" data-category="boty">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Bot">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Boty dc</span>
-                        <span class="portfolio-name">Systemy serwerów</span>
-                    </div>
+                <div class="card" onclick="openGallery('boty')">
+                    <h2>BOTY DISCORD</h2>
                 </div>
-
-                <div class="portfolio-item" data-category="strony">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Strona">
-                    <div class="portfolio-desc">
-                        <span class="portfolio-tag">Strony www</span>
-                        <span class="portfolio-name">Dla wymagających</span>
-                    </div>
+                <div class="card" onclick="openGallery('strony')">
+                    <h2>STRONY WWW</h2>
                 </div>
             </div>
+        </section>
+
+        <div id="banery-view" class="page-view">
+            <div class="exit-portfolio-btn" onclick="closeGallery()">
+                <i class="fas fa-arrow-left"></i> Powrót
+            </div>
+            <h1>Banery</h1>
+            <div class="image-grid"></div>
         </div>
 
-        <div id="shop-view" class="page-view">
-            <div class="shop-title">Sklep CoreVisuals</div>
-            <div class="shop-grid">
-                
-                <div class="shop-card">
-                    <div class="product-img">
-                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739237467258900/basic.png?ex=6993aacc&is=6992594c&hm=32b420c4a43e4b86b6cf096681b75780edd68bcf846acd0b43b762746c2840c6&">
-                    </div>
-                    <span class="product-name">CorePack - Basic</span>
-                    <span class="product-price">5.00 PLN</span>
-                    <div class="buy-group">
-                        <button onclick="openInfo('basic')" class="info-btn">i</button>
-                        <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
-                    </div>
-                </div>
+        <div id="miniaturki-live-view" class="page-view">
+            <div class="exit-portfolio-btn" onclick="closeGallery()">
+                <i class="fas fa-arrow-left"></i> Powrót
+            </div>
+            <h1>Miniaturki Live</h1>
+            <div class="image-grid"></div>
+        </div>
 
-                <div class="shop-card">
-                    <div class="product-img">
-                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739243112534077/med.png?ex=6993aacd&is=6992594d&hm=ae0d4163153fa3bea063c39f8163c9febd6466b40f011be963c7e0d48aa508bd&">
-                    </div>
-                    <span class="product-name">CorePack - Medium</span>
-                    <span class="product-price">10.00 PLN</span>
-                    <div class="buy-group">
-                        <button onclick="openInfo('medium')" class="info-btn">i</button>
-                        <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
-                    </div>
-                </div>
+        <div id="miniaturki-zwykle-view" class="page-view">
+            <div class="exit-portfolio-btn" onclick="closeGallery()">
+                <i class="fas fa-arrow-left"></i> Powrót
+            </div>
+            <h1>Miniaturki Zwykłe</h1>
+            <div class="image-grid"></div>
+        </div>
 
-                <div class="shop-card">
-                    <div class="product-img">
-                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472740672217026631/core.png?ex=6993ac22&is=69925aa2&hm=141eec9fe1c3acb4a2fda1bb7809039335748f8f543f5abc7107b6a110345f34&">
-                    </div>
-                    <span class="product-name">CorePack - Core</span>
-                    <span class="product-price">15.00 PLN</span>
-                    <div class="buy-group">
-                        <button onclick="openInfo('core')" class="info-btn">i</button>
-                        <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
-                    </div>
+        <div id="profilowe-view" class="page-view">
+            <div class="exit-portfolio-btn" onclick="closeGallery()">
+                <i class="fas fa-arrow-left"></i> Powrót
+            </div>
+            <h1>Profilowe</h1>
+            <div class="image-grid"></div>
+        </div>
+
+        <div id="boty-view" class="page-view">
+            <div class="exit-portfolio-btn" onclick="closeGallery()">
+                <i class="fas fa-arrow-left"></i> Powrót
+            </div>
+            <h1>Boty Discord</h1>
+            <div class="image-grid"></div>
+        </div>
+
+        <div id="strony-view" class="page-view">
+            <div class="exit-portfolio-btn" onclick="closeGallery()">
+                <i class="fas fa-arrow-left"></i> Powrót
+            </div>
+            <h1>Strony WWW</h1>
+            <div class="image-grid"></div>
+        </div>
+
+    </div>
                 </div>
 
             </div>
