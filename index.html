@@ -399,58 +399,53 @@
                 <button class="filter-btn" onclick="filterItems('strony', this)">Strony</button>
             </div>
 
-            <div id="portfolio-view" class="page-view">
-            <h1>Moje Portfolio</h1>
-            <div class="portfolio-grid">
-                
-                <a href="#miniaturki" class="portfolio-item">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png">
-                    <div class="portfolio-desc"><span class="portfolio-tag">Kategoria</span><h3>Miniaturki</h3></div>
-                </a>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <div class="portfolio-item" data-category="miniaturki">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Miniaturka">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Miniaturki</span>
+                        <span class="portfolio-name">Projekty dla graczy</span>
+                    </div>
+                </div>
 
-                <a href="#profilowe" class="portfolio-item">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png">
-                    <div class="portfolio-desc"><span class="portfolio-tag">Kategoria</span><h3>Profilowe</h3></div>
-                </a>
+                <div class="portfolio-item" data-category="profilowe">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Profilowe">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Profilowe</span>
+                        <span class="portfolio-name">Avatary dla twórców</span>
+                    </div>
+                </div>
 
-                <a href="#banery-yt" class="portfolio-item">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png">
-                    <div class="portfolio-desc"><span class="portfolio-tag">Kategoria</span><h3>Banery YouTube</h3></div>
-                </a>
+                <div class="portfolio-item" data-category="banery-dc">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Baner DC">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Banery dc</span>
+                        <span class="portfolio-name">Brandingi avaratów</span>
+                    </div>
+                </div>
 
-                <a href="#banery-dc" class="portfolio-item">
-                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png">
-                    <div class="portfolio-desc"><span class="portfolio-tag">Kategoria</span><h3>Banery Discord</h3></div>
-                </a>
+                <div class="portfolio-item" data-category="banery-yt">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Baner YT">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Banery yt</span>
+                        <span class="portfolio-name">Brandingi kanałów</span>
+                    </div>
+                </div>
 
-            </div>
-        </div>
+                <div class="portfolio-item" data-category="boty">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Bot">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Boty dc</span>
+                        <span class="portfolio-name">Systemy serwerów</span>
+                    </div>
+                </div>
 
-        <div id="miniaturki-view" class="page-view">
-            <button class="back-btn" onclick="location.hash='#portfolio'">← Powrót do Portfolio</button>
-            <h1>Projekty Miniaturek</h1>
-            <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="TWOJE_ZDJECIE.png"></div>
-            </div>
-        </div>
-
-        <div id="profilowe-view" class="page-view">
-            <button class="back-btn" onclick="location.hash='#portfolio'">← Powrót do Portfolio</button>
-            <h1>Moje Profilowe</h1>
-            <div class="portfolio-grid"></div>
-        </div>
-
-        <div id="banery-yt-view" class="page-view">
-            <button class="back-btn" onclick="location.hash='#portfolio'">← Powrót do Portfolio</button>
-            <h1>Banery YouTube</h1>
-            <div class="portfolio-grid"></div>
-        </div>
-
-        <div id="banery-dc-view" class="page-view">
-            <button class="back-btn" onclick="location.hash='#portfolio'">← Powrót do Portfolio</button>
-            <h1>Banery Discord</h1>
-            <div class="portfolio-grid"></div>
-        </div>
+                <div class="portfolio-item" data-category="strony">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Strona">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Strony www</span>
+                        <span class="portfolio-name">Dla wymagających</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -591,39 +586,12 @@ function handleRouting() {
     const hash = window.location.hash;
     if (hash === '#sklep') showShop();
     else if (hash === '#portfolio') showPortfolio();
-    else if (hash === '#home' || hash === '') showMain();
-} function hideAll() {
-            document.querySelectorAll('.page-view').forEach(view => {
-                view.style.display = 'none';
-            });
-            window.scrollTo(0, 0);
-        }
+    else if (hash === '#strona-główna' || hash === '') showMain();
+}
 
-        // GŁÓWNY SILNIK NAWIGACJI
-        function handleRouting() {
-            const hash = window.location.hash || '#home';
-            hideAll();
-
-            if (hash === '#sklep') {
-                showShop();
-            } else if (hash === '#portfolio') {
-                showPortfolio();
-            } else if (hash === '#miniaturki') {
-                document.getElementById('miniaturki-view').style.display = 'block';
-            } else if (hash === '#profilowe') {
-                document.getElementById('profilowe-view').style.display = 'block';
-            } else if (hash === '#banery-yt') {
-                document.getElementById('banery-yt-view').style.display = 'block';
-            } else if (hash === '#banery-dc') {
-                document.getElementById('banery-dc-view').style.display = 'block';
-            } else {
-                showMain();
-            }
-        }
-
-        window.addEventListener('load', handleRouting);
-        window.addEventListener('hashchange', handleRouting);
+// Reaguj na zmiany linku i odświeżenie strony
+window.addEventListener('load', handleRouting);
+window.addEventListener('hashchange', handleRouting);
     </script>
-
 </body>
 </html>
