@@ -561,10 +561,14 @@
         function showPortfolio() { hideAll(); document.getElementById('portfolio-view').style.display = 'block'; }
 
         function hideAll() {
-            document.getElementById('main-view').style.display = 'none';
-            document.getElementById('shop-view').style.display = 'none';
-            document.getElementById('portfolio-view').style.display = 'none';
-            window.scrollTo(0, 0);
+            if (hash === '#sklep') {
+                document.getElementById('shop-view').style.display = 'block';
+            } else if (hash === '#portfolio') {
+                document.getElementById('portfolio-view').style.display = 'block';
+            } else {
+                document.getElementById('main-view').style.display = 'block';
+            }
+            window.scrollTo(0,0);
         }
 
         function filterItems(category, btn) {
@@ -582,32 +586,6 @@
                 }
             });
         }
-<script>
-        // Funkcje pokazujące odpowiednią sekcję
-        function showSection() {
-            const hash = window.location.hash || '#home';
-            
-            // Najpierw chowamy wszystko
-            document.getElementById('main-view').style.display = 'none';
-            document.getElementById('portfolio-view').style.display = 'none';
-            document.getElementById('shop-view').style.display = 'none';
-
-            // Pokazujemy to, co jest w linku
-            if (hash === '#sklep') {
-                document.getElementById('shop-view').style.display = 'block';
-            } else if (hash === '#portfolio') {
-                document.getElementById('portfolio-view').style.display = 'block';
-            } else {
-                document.getElementById('main-view').style.display = 'block';
-            }
-            window.scrollTo(0, 0);
-        }
-
-        // Słuchaj zmian w linku (hashtagu)
-        window.addEventListener('hashchange', showSection);
-        
-        // Sprawdź przy starcie strony
-        window.addEventListener('load', showSection);
     </script>
 </body>
 </html>
