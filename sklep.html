@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xfendziak | Sklep</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">NAZWA PACZKI</h2>
+                <span class="close-x" onclick="closeModal()">&times;</span>
+            </div>
+            <div id="modalList"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-logo"><a href="index.html" style="color:inherit; text-decoration:none;">xfendziak</a></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="sklep.html">Sklep</a>
+            <a href="https://discord.gg/7PWtcsybV3" class="nav-btn" target="_blank">CoreVisuals</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-view" style="display: block;">
+            <div class="shop-title">Sklep CoreVisuals</div>
+            <div class="shop-grid">
+                <div class="shop-card">
+                    <div class="product-img">
+                        <img src="https://cdn.discordapp.com/attachments/1363630590448111740/1472739237467258900/basic.png?ex=6993aacc&is=6992594c&hm=32b420c4a43e4b86b6cf096681b75780edd68bcf846acd0b43b762746c2840c6&">
+                    </div>
+                    <span class="product-name">CorePack - Basic</span>
+                    <span class="product-price">5.00 PLN</span>
+                    <div class="buy-group">
+                        <button onclick="openInfo('basic')" class="info-btn">i</button>
+                        <a href="https://discord.gg/7PWtcsybV3" target="_blank" class="zakup-btn">ZAKUP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 xfendziak. Wszelkie prawa zastrzeżone.
+        </footer>
+    </div>
+
+    <script>
+        const packData = {
+            'basic': {
+                title: 'CorePack Basic',
+                items: [['tła zwykłe', 'x3'], ['tła zniszczonego terenu', 'x2'], ['dodatków', 'x5']]
+            }
+        };
+
+        function openInfo(packKey) {
+            const pack = packData[packKey];
+            document.getElementById('modalTitle').innerText = pack.title;
+            const listContainer = document.getElementById('modalList');
+            listContainer.innerHTML = ''; 
+            pack.items.forEach(item => {
+                listContainer.innerHTML += `<div class="info-row"><span class="info-label">${item[0]}</span><span class="info-count">${item[1]}</span></div>`;
+            });
+            document.getElementById('infoModal').style.display = "block";
+        }
+
+        function closeModal() { document.getElementById('infoModal').style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById('infoModal')) { closeModal(); } }
+    </script>
+</body>
+</html>

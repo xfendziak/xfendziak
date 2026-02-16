@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xfendziak | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo"><a href="index.html" style="color:inherit; text-decoration:none;">xfendziak</a></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="sklep.html">Sklep</a>
+            <a href="https://discord.gg/7PWtcsybV3" class="nav-btn" target="_blank">CoreVisuals</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-view" style="display: block;">
+            <h1>Portfolio</h1>
+            <p class="subtitle">Przeglądaj moje projekty</p>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterItems('all', this)">Wszystko</button>
+                <button class="filter-btn" onclick="filterItems('miniaturki', this)">Miniaturki</button>
+                <button class="filter-btn" onclick="filterItems('profilowe', this)">Profilowe</button>
+                <button class="filter-btn" onclick="filterItems('banery-yt', this)">Banery YT</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="miniaturki">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Miniaturka">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Miniaturki</span>
+                        <span class="portfolio-name">Projekty dla graczy</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="profilowe">
+                    <img src="https://cdn.discordapp.com/attachments/1387424176020656242/1472693477174280253/CoreVisuals_1.png?ex=6993802e&is=69922eae&hm=8b4439591f3fb8a29c6d8585ccbac877507cc0e4845974c037e0393009c9a98a&" alt="Profilowe">
+                    <div class="portfolio-desc">
+                        <span class="portfolio-tag">Profilowe</span>
+                        <span class="portfolio-name">Avatary dla twórców</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2026 xfendziak. Wszelkie prawa zastrzeżone.
+        </footer>
+    </div>
+
+    <script>
+        function filterItems(category, btn) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
