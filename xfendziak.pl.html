@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xfendziak.pl | Centrum Twórców</title>
+    <style>
+        /* Szybkie style, żeby strona wyglądała jak Twój pomysł */
+        :root {
+            --bg: #0f0f0f;
+            --text: #ffffff;
+            --accent: #1e1e1e;
+            --hover: #333333;
+            --transition: all 0.4s ease;
+        }
+
+        .light-mode {
+            --bg: #f5f5f5;
+            --text: #1a1a1a;
+            --accent: #e0e0e0;
+            --hover: #cccccc;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+            scroll-behavior: smooth;
+        }
+
+        /* Nawigacja */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a, .mode-toggle {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        nav a:hover { opacity: 0.7; }
+
+        /* Hero Section - Napis i Opis */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 { font-size: 4rem; margin-bottom: 10px; }
+        .description { font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; opacity: 0.9; }
+
+        /* Przyciski */
+        .btn-container { display: flex; gap: 20px; }
+        .btn {
+            padding: 15px 40px;
+            background-color: var(--accent);
+            color: var(--text);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover { background-color: var(--hover); transform: translateY(-3px); }
+
+        /* Opinie */
+        .reviews { padding: 80px 20px; text-align: center; background: rgba(0,0,0,0.05); }
+        .review-card { font-style: italic; margin: 20px auto; max-width: 500px; opacity: 0.8; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; }
+
+        /* Animacja wejścia */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#">Strona główna</a>
+        <a href="#update">Update</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="https://discord.gg/twoj-link" target="_blank">Discord</a>
+        <span class="mode-toggle" onclick="toggleMode()">🌓 Tryb</span>
+    </nav>
+
+    <main class="hero">
+        <h1>xfendziak.pl</h1>
+        <p class="description">
+            Najlepsze centrum dla twórców. Znajdź bezpłatne zasoby do swojego kolejnego projektu, 
+            w tym muzykę, efekty dźwiękowe, obrazy i wiele więcej.
+        </p>
+        
+        <div class="btn-container">
+            <a href="#montaz" class="btn">Montaż</a>
+            <a href="#grafiki" class="btn">Grafiki</a>
+        </div>
+    </main>
+
+    <section class="reviews" id="update">
+        <h2>Opinie użytkowników</h2>
+        <div class="review-card">"Najlepsza paczka efektów jaką pobrałem, mega ułatwia pracę!" ~ Marek</div>
+        <div class="review-card">"Czysty design i wszystko pod ręką. Polecam." ~ GFX_Pro</div>
+    </section>
+
+    <footer>
+        <p>&copy; xfendziak.pl 2026</p>
+    </footer>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+        }
+    </script>
+
+</body>
+</html>
