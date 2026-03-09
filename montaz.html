@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zasoby do Montażu | xfendziak.pl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0a0a0a;
+            --text-color: #ededed;
+            --accent: #8b5cf6; /* Fioletowy z Twojej inspiracji */
+            --border-color: rgba(255, 255, 255, 0.08);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px; /* Efekt siatki w tle */
+            padding-bottom: 100px;
+        }
+
+        /* --- NAGŁÓWEK --- */
+        header {
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -3px; margin-bottom: 10px; }
+        .subtitle { opacity: 0.5; font-size: 1.1rem; margin-bottom: 30px; }
+
+        .back-link {
+            display: inline-block;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .back-link:hover { opacity: 1; transform: translateX(-5px); }
+
+        /* --- FILTRY (Z Twojej inspiracji) --- */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* --- SIATKA ZASOBÓW --- */
+        .resources-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .wave-preview {
+            height: 60px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(139, 92, 246, 0.3);
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .resource-info h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .download-btn:hover { background: #fff; color: #000; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">← Wróć do strony głównej</a>
+        <h1>Zasoby Hub</h1>
+        <p class="subtitle">Wszystko czego potrzebujesz do swojego kolejnego montażu.</p>
+        
+        <div class="filters">
+            <button class="filter-btn active">Wszystko</button>
+            <button class="filter-btn">SFX</button>
+            <button class="filter-btn">Muzyka</button>
+            <button class="filter-btn">Animacje</button>
+            <button class="filter-btn">Presety</button>
+        </div>
+    </header>
+
+    <main class="resources-grid">
+        <div class="resource-card">
+            <span class="tag">SFX</span>
+            <div class="wave-preview">
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="resource-info">
+                <h3>Whoosh Main</h3>
+                <p style="font-size: 0.8rem; opacity: 0.5;">Czysty efekt przejścia typu whoosh.</p>
+            </div>
+            <button class="download-btn">Pobierz .WAV</button>
+        </div>
+
+        <div class="resource-card">
+            <span class="tag">Animacje</span>
+            <div class="wave-preview" style="background: rgba(255,255,255,0.03)">
+                <span style="font-size: 0.7rem; opacity: 0.4;">Video Preview</span>
+            </div>
+            <div class="resource-info">
+                <h3>Glitch Overlay</h3>
+                <p style="font-size: 0.8rem; opacity: 0.5;">Nakładka wideo z efektem błędu.</p>
+            </div>
+            <button class="download-btn">Pobierz .MP4</button>
+        </div>
+
+        <div class="resource-card">
+            <span class="tag">Muzyka</span>
+            <div class="wave-preview">
+                <div class="play-btn">▶</div>
+            </div>
+            <div class="resource-info">
+                <h3>Lo-Fi Chill Beat</h3>
+                <p style="font-size: 0.8rem; opacity: 0.5;">Idealne podkład pod commentary.</p>
+            </div>
+            <button class="download-btn">Pobierz .MP3</button>
+        </div>
+    </main>
+
+</body>
+</html>
