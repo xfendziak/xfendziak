@@ -129,6 +129,7 @@
             border-color: var(--accent);
         }
 
+        /* --- MODAL SYSTEM --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -174,6 +175,7 @@
             padding-bottom: 15px;
         }
 
+        /* --- GALLERY GRID --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -185,6 +187,8 @@
             background: #1a1a1a;
             transition: 0.3s;
             position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
         }
 
         .gallery-item:hover {
@@ -195,9 +199,41 @@
         .gallery-item img {
             width: 100%;
             display: block;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- FULLSCREEN VIEWER (LIGHTBOX) --- */
+        #fullscreen-viewer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            animation: fadeIn 0.3s ease;
+        }
+
+        #fullscreen-viewer img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- UI ELEMENTS --- */
         .mc-btn {
             background: var(--mc-btn);
             border: 4px solid #000;
@@ -225,10 +261,7 @@
             transform: scale(0.95);
         }
 
-        .close-btn {
-            padding: 10px 20px;
-            font-size: 0.8rem;
-        }
+        .close-btn { padding: 10px 20px; font-size: 0.8rem; }
 
         .contact-section {
             padding: 150px 20px;
@@ -254,7 +287,7 @@
             padding: 15px 30px;
             border: 4px solid #000;
             transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 3000;
+            z-index: 4000;
         }
 
         footer {
@@ -284,6 +317,10 @@
     <div id="toast">NICK SKOPIOWANY!</div>
     <canvas id="particles"></canvas>
 
+    <div id="fullscreen-viewer" onclick="this.style.display='none'">
+        <img src="" id="full-img" alt="Powiększony obraz">
+    </div>
+
     <div class="modal-overlay" id="modal-avatars">
         <div class="modal-content">
             <div class="modal-header">
@@ -291,9 +328,9 @@
                 <button class="mc-btn close-btn" onclick="closeModal('modal-avatars')">POWROT</button>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://via.placeholder.com/500x500/222/fff?text=Avatar+1" alt="Avatar"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/500x500/222/fff?text=Avatar+2" alt="Avatar"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/500x500/222/fff?text=Avatar+3" alt="Avatar"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/800x800/222/fff?text=Avatar+1" alt="Avatar"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/800x800/222/fff?text=Avatar+2" alt="Avatar"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/800x800/222/fff?text=Avatar+3" alt="Avatar"></div>
             </div>
         </div>
     </div>
@@ -305,9 +342,9 @@
                 <button class="mc-btn close-btn" onclick="closeModal('modal-thumbnails')">POWROT</button>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://i.imgur.com/4qEpWcr.jpeg" alt="YT"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/600x337/222/fff?text=Miniaturka+2" alt="YT"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/600x337/222/fff?text=Miniaturka+3" alt="YT"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://i.imgur.com/4qEpWcr.jpeg" alt="YT"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/1280x720/222/fff?text=Miniaturka+2" alt="YT"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/1280x720/222/fff?text=Miniaturka+3" alt="YT"></div>
             </div>
         </div>
     </div>
@@ -319,9 +356,9 @@
                 <button class="mc-btn close-btn" onclick="closeModal('modal-logos')">POWROT</button>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://via.placeholder.com/500x500/222/fff?text=Logo+1" alt="Logo"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/500x500/222/fff?text=Logo+2" alt="Logo"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/500x500/222/fff?text=Logo+3" alt="Logo"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/800x800/222/fff?text=Logo+1" alt="Logo"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/800x800/222/fff?text=Logo+2" alt="Logo"></div>
+                <div class="gallery-item" onclick="zoomImg(this)"><img src="https://via.placeholder.com/800x800/222/fff?text=Logo+3" alt="Logo"></div>
             </div>
         </div>
     </div>
@@ -334,7 +371,6 @@
 
     <div class="container" id="moje-prace">
         <div class="portfolio-grid">
-            
             <div class="card" onclick="openModal('modal-avatars')">
                 <div class="card-img"><p style="color:#555">[ ZOBACZ AVATARY ]</p></div>
                 <div class="card-content">
@@ -358,7 +394,6 @@
                     <p style="color:var(--text-dim); font-size:0.8rem">CINEMA 4D / PHOTOSHOP</p>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -375,6 +410,16 @@
     </footer>
 
     <script>
+        // Zoom function
+        function zoomImg(el) {
+            const imgSrc = el.querySelector('img').src;
+            const viewer = document.getElementById('fullscreen-viewer');
+            const fullImg = document.getElementById('full-img');
+            fullImg.src = imgSrc;
+            viewer.style.display = 'flex';
+        }
+
+        // Smooth Scroll
         document.getElementById('scroll-trigger').addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
@@ -384,6 +429,7 @@
             });
         });
 
+        // Modals
         function openModal(id) {
             const modal = document.getElementById(id);
             modal.style.display = 'flex';
@@ -398,7 +444,9 @@
             modal.classList.remove('active');
             setTimeout(() => {
                 modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; 
+                if (!document.querySelector('.modal-overlay.active')) {
+                    document.body.style.overflow = 'auto'; 
+                }
             }, 400);
         }
 
@@ -408,6 +456,7 @@
             }
         }
 
+        // Particles
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -421,9 +470,7 @@
         resize();
 
         class Particle {
-            constructor() {
-                this.reset();
-            }
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
@@ -447,31 +494,26 @@
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
         animate();
 
+        // Reveal animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('reveal');
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
+        // Clipboard
         function copyDiscord(nick) {
             navigator.clipboard.writeText(nick);
             const toast = document.getElementById('toast');
             toast.style.top = '20px';
-            setTimeout(() => {
-                toast.style.top = '-100px';
-            }, 2500);
+            setTimeout(() => { toast.style.top = '-100px'; }, 2500);
         }
     </script>
 </body>
