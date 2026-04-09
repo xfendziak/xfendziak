@@ -129,7 +129,6 @@
             border-color: var(--accent);
         }
 
-        /* --- MODAL SYSTEM --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -175,7 +174,6 @@
             padding-bottom: 15px;
         }
 
-        /* --- GALLERY GRID --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -208,7 +206,6 @@
             transform: scale(1.1);
         }
 
-        /* --- FULLSCREEN VIEWER (LIGHTBOX) --- */
         #fullscreen-viewer {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -233,7 +230,6 @@
             to { opacity: 1; }
         }
 
-        /* --- UI ELEMENTS --- */
         .mc-btn {
             background: var(--mc-btn);
             border: 4px solid #000;
@@ -410,7 +406,6 @@
     </footer>
 
     <script>
-        // Zoom function
         function zoomImg(el) {
             const imgSrc = el.querySelector('img').src;
             const viewer = document.getElementById('fullscreen-viewer');
@@ -419,7 +414,6 @@
             viewer.style.display = 'flex';
         }
 
-        // Smooth Scroll
         document.getElementById('scroll-trigger').addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
@@ -429,7 +423,6 @@
             });
         });
 
-        // Modals
         function openModal(id) {
             const modal = document.getElementById(id);
             modal.style.display = 'flex';
@@ -456,7 +449,6 @@
             }
         }
 
-        // Particles
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -499,7 +491,6 @@
         }
         animate();
 
-        // Reveal animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) entry.target.classList.add('reveal');
@@ -508,7 +499,6 @@
 
         document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
-        // Clipboard
         function copyDiscord(nick) {
             navigator.clipboard.writeText(nick);
             const toast = document.getElementById('toast');
